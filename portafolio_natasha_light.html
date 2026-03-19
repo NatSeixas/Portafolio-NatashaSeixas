@@ -472,7 +472,129 @@
     .projects-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 8px; text-align: center; }
   }
-</style>
+
+  /* iPhone Mockup */
+  .iphone-mockup {
+    position: relative;
+    width: 260px;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+  .iphone-frame {
+    position: relative;
+    background: #1a1a1a;
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow: 0 0 0 2px #3a3a3a, 0 20px 60px rgba(0,0,0,0.5), inset 0 0 0 1px #555;
+  }
+  .iphone-screen {
+    border-radius: 34px;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+  }
+  .iphone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 24px;
+    background: #1a1a1a;
+    border-radius: 0 0 16px 16px;
+    z-index: 10;
+  }
+  .iphone-screen img {
+    width: 100%;
+    display: block;
+  }
+  .iphone-button {
+    position: absolute;
+    right: -3px;
+    top: 100px;
+    width: 3px;
+    height: 40px;
+    background: #3a3a3a;
+    border-radius: 0 2px 2px 0;
+  }
+
+  
+  .carousel-wrapper {
+    position: relative;
+    background: #0a0f1e;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    min-height: 500px;
+  }
+  .iphone-shell {
+    position: relative;
+    width: 240px;
+    background: #1c1c1e;
+    border-radius: 42px;
+    padding: 10px;
+    box-shadow: 0 0 0 2px #3a3a3a, 0 24px 60px rgba(0,0,0,0.6), inset 0 0 0 1px #555;
+    flex-shrink: 0;
+  }
+  .iphone-inner {
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+  }
+  .iphone-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 20px;
+    background: #1c1c1e;
+    border-radius: 0 0 14px 14px;
+    z-index: 20;
+    pointer-events: none;
+  }
+  .iphone-side-btn {
+    position: absolute;
+    left: -4px;
+    top: 80px;
+    width: 4px;
+    height: 32px;
+    background: #3a3a3a;
+    border-radius: 2px 0 0 2px;
+  }
+  .carousel-nav-left {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .carousel-nav-right {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  </style>
 </head>
 <body>
 
@@ -686,12 +808,14 @@
 
     <!-- UPPER CARRUSEL 2 - Amazon Prime Day -->
     <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
-        <div id="upper2-carousel" style="display:flex;transition:transform 0.4s ease;width:700%;height:480px;">
+      <div class="carousel-wrapper">
+        <div class="iphone-shell"><div class="iphone-notch"></div><div class="iphone-side-btn"></div><div class="iphone-inner" style="overflow:hidden;">
+        <div id="upper2-carousel" style="overflow:hidden;" style="display:flex;transition:transform 0.4s ease;width:700%;height:480px;">
           <img src="images/img_010.png" style="width:14.2857%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_011.png" style="width:14.2857%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_012.png" style="width:14.2857%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_013.png" style="width:14.2857%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_014.png" style="width:14.2857%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_015.png" style="width:14.2857%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_016.png" style="width:14.2857%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" />
         </div>
-        <button onclick="upper2Prev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="upper2Next()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        </div></div></div><!-- /iphone -->
+        <button class="carousel-nav-left" onclick="upper2Prev()">‹</button>
+        <button class="carousel-nav-right" onclick="upper2Next()">›</button>
         <div id="upper2-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 7</div>
         <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;" id="upper2-dots">
           <div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div>
@@ -721,12 +845,18 @@
 
     <!-- UPPER CARRUSEL 3 - Amazon Tax Free -->
     <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
+      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;display:flex;align-items:center;justify-content:center;padding:40px 20px;min-height:520px;">
+        <div class="iphone-mockup">
+          <div class="iphone-frame">
+            <div class="iphone-notch"></div>
+            <div class="iphone-button"></div>
+            <div class="iphone-screen">
         <div id="upper3-carousel" style="display:flex;transition:transform 0.4s ease;width:300%;height:480px;">
           <img src="images/img_017.png" style="width:33.3333%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_018.png" style="width:33.3333%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_019.png" style="width:33.3333%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" />
         </div>
         <button onclick="upper3Prev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
         <button onclick="upper3Next()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+            </div></div></div><!-- close iphone -->
         <div id="upper3-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 3</div>
         <!-- Stat badge -->
         <div style="position:absolute;top:16px;left:16px;background:#e53e3e;color:white;padding:6px 14px;border-radius:100px;font-size:0.78rem;font-weight:700;">❤️ 399 likes · 173 compartidos</div>
@@ -757,10 +887,12 @@
     </script>
 
     <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
-        <div id="rdcar-carousel" style="display:flex;transition:transform 0.4s ease;width:400%;height:480px;"><img src="images/img_020.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_021.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_022.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_023.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /></div>
-        <button onclick="rdcarPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="rdcarNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+      <div class="carousel-wrapper">
+        <div class="iphone-shell"><div class="iphone-notch"></div><div class="iphone-side-btn"></div><div class="iphone-inner" style="overflow:hidden;">
+        <div id="rdcar-carousel" style="overflow:hidden;" style="display:flex;transition:transform 0.4s ease;width:400%;height:480px;"><img src="images/img_020.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_021.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_022.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_023.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /></div>
+        </div></div></div><!-- /iphone -->
+        <button class="carousel-nav-left" onclick="rdcarPrev()">‹</button>
+        <button class="carousel-nav-right" onclick="rdcarNext()">›</button>
         <div id="rdcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 4</div>
         <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div></div>
       </div>
@@ -783,10 +915,12 @@
     </script>
 
     <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
-        <div id="colcar-carousel" style="display:flex;transition:transform 0.4s ease;width:500%;height:480px;"><img src="images/img_024.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_025.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_026.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_027.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_028.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /></div>
-        <button onclick="colcarPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="colcarNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+      <div class="carousel-wrapper">
+        <div class="iphone-shell"><div class="iphone-notch"></div><div class="iphone-side-btn"></div><div class="iphone-inner" style="overflow:hidden;">
+        <div id="colcar-carousel" style="overflow:hidden;" style="display:flex;transition:transform 0.4s ease;width:500%;height:480px;"><img src="images/img_024.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_025.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_026.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_027.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_028.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /></div>
+        </div></div></div><!-- /iphone -->
+        <button class="carousel-nav-left" onclick="colcarPrev()">‹</button>
+        <button class="carousel-nav-right" onclick="colcarNext()">›</button>
         <div id="colcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 5</div>
         <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div></div>
       </div>
