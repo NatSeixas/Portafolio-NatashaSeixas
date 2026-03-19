@@ -480,6 +480,90 @@
   
   
 
+  
+  /* ── Compact Carousel ── */
+  .carousel-card-inner {
+    position: relative;
+    background: #0d1117;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 64px;
+    min-height: 360px;
+    overflow: hidden;
+  }
+  .carousel-track-wrap {
+    width: 100%;
+    max-width: 320px;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .carousel-track-wrap .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+  .carousel-track-wrap .carousel-track img {
+    flex-shrink: 0;
+    display: block;
+    object-fit: cover;
+  }
+  .c-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    backdrop-filter: blur(4px);
+  }
+  .c-btn:hover { background: rgba(255,255,255,0.25); }
+  .c-btn-l { left: 16px; }
+  .c-btn-r { right: 16px; }
+  .c-counter {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+  }
+  .c-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+  }
+  .c-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    transition: background 0.3s;
+  }
+  .c-dot.active { background: white; }
+  @media (max-width: 768px) {
+    .carousel-card-inner { padding: 16px 48px; min-height: 280px; }
+    .carousel-track-wrap { max-width: 100%; }
+  }
+
   </style>
 </head>
 <body>
@@ -646,19 +730,19 @@
 
 
     <!-- UPPER CARRUSEL -->
-    <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;max-height:420px;">
+    <div class="project-card reveal" style="grid-column: span 2; max-width: 680px; margin: 0 auto; width: 100%;">
+      <div class="carousel-card-inner"><button class="c-btn c-btn-l" onclick="upperPrev()">‹</button><div class="carousel-track-wrap"><div class="carousel-track" id="upper-carousel-new" style="width:800%;">
         <!-- Carrusel -->
         <div id="upper-carousel" style="display:flex;transition:transform 0.4s ease;width:800%;height:480px;">
           <img src="images/img_002.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_003.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_004.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_005.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_006.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_007.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_008.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_009.png" style="width:12.5%;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" />
         </div>
         <!-- Controles -->
-        </div></div><button onclick="upperPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="upperNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        </div></div></div></div><button class="c-btn c-btn-r" onclick="upperNext()">›</button>
+        
         <!-- Contador -->
-        <div id="upper-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 8</div>
+        <div class="c-counter" id="upper-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 8</div>
         <!-- Dots -->
-        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;" id="upper-dots">
+        <div class="c-dots" id="upper-dots">
           <div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div>
         </div>
       </div>
@@ -674,7 +758,7 @@
       var upperIdx = 0;
       var upperTotal = 8;
       function upperUpdate() {
-        document.getElementById('upper-carousel').style.transform = 'translateX(-' + (upperIdx * 12.5) + '%)';
+        document.getElementById('upper-carousel-new').style.transform = 'translateX(-' + (upperIdx * 12.5) + '%)';
         document.getElementById('upper-counter').textContent = (upperIdx + 1) + ' / ' + upperTotal;
         document.querySelectorAll('.upper-dot').forEach(function(d, i) {
           d.style.background = i === upperIdx ? 'white' : 'rgba(255,255,255,0.4)';
@@ -685,13 +769,13 @@
     </script>
 
     <!-- UPPER CARRUSEL 2 - Amazon Prime Day -->
-    <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;max-height:420px;">
+    <div class="project-card reveal" style="grid-column: span 2; max-width: 680px; margin: 0 auto; width: 100%;">
+      <div class="carousel-card-inner"><button class="c-btn c-btn-l" onclick="upper2Prev()">‹</button><div class="carousel-track-wrap"><div class="carousel-track" id="upper2-carousel-new" style="width:700%;">
         
-        </div></div><button onclick="upper2Prev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="upper2Next()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
-        <div id="upper2-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 7</div>
-        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;" id="upper2-dots">
+        </div></div></div></div><button class="c-btn c-btn-r" onclick="upper2Next()">›</button>
+        
+        <div class="c-counter" id="upper2-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 7</div>
+        <div class="c-dots" id="upper2-dots">
           <div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div>
         </div>
       </div>
@@ -707,7 +791,7 @@
       var upper2Idx = 0;
       var upper2Total = 7;
       function upper2Update() {
-        document.getElementById('upper2-carousel').style.transform = 'translateX(-' + (upper2Idx * (100/7)) + '%)';
+        document.getElementById('upper2-carousel-new').style.transform = 'translateX(-' + (upper2Idx * (100/7)) + '%)';
         document.getElementById('upper2-counter').textContent = (upper2Idx + 1) + ' / ' + upper2Total;
         document.querySelectorAll('.upper2-dot').forEach(function(d, i) {
           d.style.background = i === upper2Idx ? 'white' : 'rgba(255,255,255,0.4)';
@@ -718,7 +802,7 @@
     </script>
 
     <!-- UPPER CARRUSEL 3 - Amazon Tax Free -->
-    <div class="project-card reveal" style="grid-column: span 2;">
+    <div class="project-card reveal" style="grid-column: span 2; max-width: 680px; margin: 0 auto; width: 100%;">
       <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;display:flex;align-items:center;justify-content:center;padding:40px 20px;min-height:520px;">
         
             
@@ -727,10 +811,10 @@
         <div id="upper3-carousel" style="display:flex;transition:transform 0.4s ease;width:300%;height:480px;">
           <img src="images/img_017.png" style="width:33.3333%;object-fit:cover;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_018.png" style="width:33.3333%;object-fit:cover;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" /><img src="images/img_019.png" style="width:33.3333%;object-fit:cover;flex-shrink:0;object-fit:contain;height:480px;display:block;background:#0a0f1e;" />
         </div>
-        </div></div><button onclick="upper3Prev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="upper3Next()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        </div></div></div></div><button class="c-btn c-btn-r" onclick="upper3Next()">›</button>
+        
 
-        <div id="upper3-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 3</div>
+        <div class="c-counter" id="upper3-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 3</div>
         <!-- Stat badge -->
         <div style="position:absolute;top:16px;left:16px;background:#e53e3e;color:white;padding:6px 14px;border-radius:100px;font-size:0.78rem;font-weight:700;">❤️ 399 likes · 173 compartidos</div>
         <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
@@ -749,7 +833,7 @@
       var upper3Idx = 0;
       var upper3Total = 3;
       function upper3Update() {
-        document.getElementById('upper3-carousel').style.transform = 'translateX(-' + (upper3Idx * (100/3)) + '%)';
+        document.getElementById('upper3-carousel-new').style.transform = 'translateX(-' + (upper3Idx * (100/3)) + '%)';
         document.getElementById('upper3-counter').textContent = (upper3Idx + 1) + ' / ' + upper3Total;
         document.querySelectorAll('.upper3-dot').forEach(function(d, i) {
           d.style.background = i === upper3Idx ? 'white' : 'rgba(255,255,255,0.4)';
@@ -759,12 +843,12 @@
       function upper3Prev() { upper3Idx = (upper3Idx - 1 + upper3Total) % upper3Total; upper3Update(); }
     </script>
 
-    <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;max-height:420px;">
+    <div class="project-card reveal" style="grid-column: span 2; max-width: 680px; margin: 0 auto; width: 100%;">
+      <div class="carousel-card-inner"><div style="position:absolute;top:12px;left:16px;background:#e53e3e;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">❤️ 399 likes · 173 compartidos</div><button class="c-btn c-btn-l" onclick="upper3Prev()">‹</button><div class="carousel-track-wrap"><div class="carousel-track" id="upper3-carousel-new" style="width:300%;">
         
-        </div></div><button onclick="rdcarPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="rdcarNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
-        <div id="rdcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 4</div>
+        </div></div></div></div><button class="c-btn c-btn-r" onclick="rdcarNext()">›</button>
+        
+        <div class="c-counter" id="rdcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 4</div>
         <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div></div>
       </div>
       <div class="project-body">
@@ -777,7 +861,7 @@
     <script>
       var rdcarIdx = 0, rdcarTotal = 4;
       function rdcarUpdate() {
-        document.getElementById('rdcar-carousel').style.transform = 'translateX(-' + (rdcarIdx * (100/4)) + '%)';
+        document.getElementById('rdcar-carousel-new').style.transform = 'translateX(-' + (rdcarIdx * (100/4)) + '%)';
         document.getElementById('rdcar-counter').textContent = (rdcarIdx + 1) + ' / ' + rdcarTotal;
         document.querySelectorAll('.rdcar-dot').forEach(function(d,i){ d.style.background = i===rdcarIdx ? 'white' : 'rgba(255,255,255,0.4)'; });
       }
@@ -785,12 +869,12 @@
       function rdcarPrev() { rdcarIdx = (rdcarIdx-1+rdcarTotal)%rdcarTotal; rdcarUpdate(); }
     </script>
 
-    <div class="project-card reveal" style="grid-column: span 2;">
-      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;max-height:420px;">
+    <div class="project-card reveal" style="grid-column: span 2; max-width: 680px; margin: 0 auto; width: 100%;">
+      <div class="carousel-card-inner"><button class="c-btn c-btn-l" onclick="rdcarPrev()">‹</button><div class="carousel-track-wrap"><div class="carousel-track" id="rdcar-carousel-new" style="width:400%;">
         
-        </div></div><button onclick="colcarPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
-        <button onclick="colcarNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
-        <div id="colcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 5</div>
+        </div></div></div></div><button class="c-btn c-btn-r" onclick="colcarNext()">›</button>
+        
+        <div class="c-counter" id="colcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 5</div>
         <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div></div>
       </div>
       <div class="project-body">
@@ -803,7 +887,7 @@
     <script>
       var colcarIdx = 0, colcarTotal = 5;
       function colcarUpdate() {
-        document.getElementById('colcar-carousel').style.transform = 'translateX(-' + (colcarIdx * (100/5)) + '%)';
+        document.getElementById('colcar-carousel-new').style.transform = 'translateX(-' + (colcarIdx * (100/5)) + '%)';
         document.getElementById('colcar-counter').textContent = (colcarIdx + 1) + ' / ' + colcarTotal;
         document.querySelectorAll('.colcar-dot').forEach(function(d,i){ d.style.background = i===colcarIdx ? 'white' : 'rgba(255,255,255,0.4)'; });
       }
