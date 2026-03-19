@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natasha Seixas — Portafolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F1EA;
+    --navy: #1A1F3A;
+    --periwinkle: #8B9DC3;
+    --periwinkle-light: #C5CFDF;
+    --periwinkle-pale: #EEF1F7;
+    --accent: #5A6A9A;
+    --gray: #6B7280;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 20px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(245,241,234,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139,157,195,0.2);
+    transition: all 0.3s ease;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--navy); letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; color: var(--gray);
+    text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(80px, 15vw, 200px);
+    font-weight: 900; color: rgba(139,157,195,0.07);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+  .hero-content { max-width: 900px; position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--periwinkle-pale);
+    color: var(--accent); font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 8px 18px; border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 900; line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--periwinkle);
+  }
+  .hero-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-style: italic; color: var(--gray);
+    margin: 32px 0 48px;
+    animation: fadeUp 0.8s 0.2s ease both;
+    border-left: 3px solid var(--periwinkle);
+    padding-left: 24px;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--navy); color: var(--white);
+    padding: 16px 36px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    letter-spacing: 0.02em; transition: all 0.3s ease;
+    border: 2px solid var(--navy);
+  }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent; color: var(--navy);
+    padding: 16px 36px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    letter-spacing: 0.02em; transition: all 0.3s ease;
+    border: 2px solid var(--navy);
+  }
+  .btn-secondary:hover { background: var(--periwinkle-pale); transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 60px;
+    display: flex; align-items: center; gap: 12px;
+    color: var(--gray); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+  .scroll-line {
+    width: 40px; height: 1px; background: var(--periwinkle);
+    animation: expand 2s ease infinite;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--periwinkle);
+    margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700; line-height: 1.05;
+    letter-spacing: -0.03em; margin-bottom: 60px;
+  }
+
+  /* SOBRE MÍ */
+  .about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-placeholder {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--periwinkle-pale), var(--periwinkle-light));
+    border-radius: 24px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-size: 0.85rem; color: var(--accent);
+    gap: 8px; text-align: center; padding: 20px;
+    border: 2px dashed var(--periwinkle-light);
+  }
+  .about-img-placeholder span { font-size: 2.5rem; }
+  .about-img-note { font-size: 0.75rem; color: var(--gray); }
+  .about-accent-box {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--navy); color: var(--white);
+    padding: 20px 28px; border-radius: 16px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1rem; max-width: 200px;
+    line-height: 1.4;
+  }
+  .about-text p {
+    font-size: 1.05rem; line-height: 1.8; color: var(--gray);
+    margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--navy); font-weight: 600; }
+  .about-stats {
+    display: flex; gap: 40px; margin-top: 40px;
+    padding-top: 40px; border-top: 1px solid var(--periwinkle-pale);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900; color: var(--navy);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 4px; }
+
+  /* HABILIDADES */
+  .skills { background: var(--cream); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .skill-card {
+    background: var(--white); border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid rgba(139,157,195,0.15);
+    transition: all 0.3s ease;
+  }
+  .skill-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(90,106,154,0.12); }
+  .skill-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--periwinkle-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 20px;
+  }
+  .skill-card h3 {
+    font-size: 1rem; font-weight: 700; margin-bottom: 12px; color: var(--navy);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    background: var(--periwinkle-pale); color: var(--accent);
+    padding: 4px 12px; border-radius: 100px;
+    font-size: 0.75rem; font-weight: 500;
+  }
+
+  /* MARCAS */
+  .brands { background: var(--navy); padding: 80px 60px; }
+  .brands .section-label { color: var(--periwinkle-light); }
+  .brands .section-title { color: var(--white); margin-bottom: 50px; }
+  .brands-grid {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+  }
+  .brand-pill {
+    background: rgba(255,255,255,0.08); color: var(--white);
+    padding: 14px 28px; border-radius: 100px;
+    font-size: 0.95rem; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+  }
+  .brand-pill:hover { background: var(--periwinkle); border-color: var(--periwinkle); }
+
+  /* PROYECTOS */
+  .projects { background: var(--cream); }
+  .projects-intro {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px; flex-wrap: wrap; gap: 20px;
+  }
+  .edit-note {
+    background: #FFF9E6; border: 1px solid #F0D060;
+    border-radius: 12px; padding: 12px 20px;
+    font-size: 0.82rem; color: #7A6000;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .project-card {
+    background: var(--white); border-radius: 24px;
+    overflow: hidden; border: 1px solid rgba(139,157,195,0.12);
+    transition: all 0.3s ease;
+  }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(90,106,154,0.14); }
+  .project-thumb {
+    height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; color: var(--accent);
+    flex-direction: column; gap: 10px; position: relative;
+    overflow: hidden;
+  }
+  .project-thumb span { font-size: 2rem; }
+  .project-thumb-label {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray);
+  }
+  .project-body { padding: 28px 32px 32px; }
+  .project-cat {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--periwinkle);
+    margin-bottom: 8px; display: block;
+  }
+  .project-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .project-body p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent); font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 12px; }
+
+  /* UPPER PLACEHOLDER */
+  .upper-section {
+    background: var(--periwinkle-pale);
+    border-radius: 24px; padding: 48px;
+    border: 2px dashed var(--periwinkle);
+    margin-top: 28px; grid-column: 1 / -1;
+    text-align: center;
+  }
+  .upper-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; margin-bottom: 12px; color: var(--navy);
+  }
+  .upper-section p { color: var(--gray); font-size: 0.9rem; margin-bottom: 24px; }
+  .upper-add-btn {
+    background: var(--accent); color: var(--white);
+    padding: 12px 28px; border-radius: 100px;
+    font-size: 0.85rem; font-weight: 600;
+    border: none; cursor: pointer; transition: all 0.3s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .upper-add-btn:hover { background: var(--navy); transform: translateY(-2px); }
+
+  /* MODAL para agregar proyectos */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(26,31,58,0.7); backdrop-filter: blur(8px);
+    z-index: 1000; align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--white); border-radius: 28px;
+    padding: 48px; max-width: 560px; width: 90%;
+    max-height: 90vh; overflow-y: auto;
+    animation: fadeUp 0.3s ease;
+  }
+  .modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; margin-bottom: 8px;
+  }
+  .modal p { color: var(--gray); font-size: 0.88rem; margin-bottom: 28px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--navy); margin-bottom: 8px;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid var(--periwinkle-light);
+    border-radius: 12px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--navy);
+    background: var(--cream); outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--periwinkle);
+  }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+  .modal-btns { display: flex; gap: 12px; margin-top: 28px; }
+  .btn-save {
+    flex: 1; background: var(--navy); color: var(--white);
+    border: none; padding: 14px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-save:hover { background: var(--accent); }
+  .btn-cancel {
+    background: var(--cream); color: var(--gray);
+    border: none; padding: 14px 28px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-cancel:hover { background: var(--periwinkle-pale); }
+
+  /* Proyecto Upper dinámico */
+  #upper-projects-list { display: contents; }
+  .upper-proj-card {
+    background: var(--white); border-radius: 24px;
+    overflow: hidden; border: 1px solid rgba(139,157,195,0.12);
+    transition: all 0.3s ease; position: relative;
+  }
+  .upper-proj-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(90,106,154,0.14); }
+  .upper-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--accent); color: white;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    padding: 4px 12px; border-radius: 100px; text-transform: uppercase;
+  }
+  .delete-btn {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(255,255,255,0.9); border: none;
+    width: 32px; height: 32px; border-radius: 50%;
+    cursor: pointer; font-size: 1rem; display: none;
+    align-items: center; justify-content: center;
+    color: #e53e3e; transition: all 0.2s; z-index: 10;
+  }
+  .upper-proj-card:hover .delete-btn { display: flex; }
+
+  /* PERIODISMO */
+  .journalism { background: var(--white); }
+  .journalism-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .journalism-card {
+    border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--periwinkle-pale);
+    transition: all 0.3s ease;
+  }
+  .journalism-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(90,106,154,0.1); }
+  .j-header {
+    padding: 32px 28px;
+    background: linear-gradient(135deg, var(--periwinkle-pale), var(--periwinkle-light));
+  }
+  .j-media { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .j-header h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.4; }
+  .j-body { padding: 24px 28px; }
+  .j-body p { font-size: 0.85rem; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
+  .j-link {
+    font-size: 0.82rem; font-weight: 600; color: var(--accent);
+    text-decoration: none; display: flex; align-items: center; gap: 6px;
+    transition: gap 0.2s;
+  }
+  .j-link:hover { gap: 10px; }
+
+  /* CONTACTO */
+  .contact {
+    background: var(--navy);
+    text-align: center; padding: 120px 60px;
+  }
+  .contact .section-label { color: var(--periwinkle-light); }
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 900; color: var(--white);
+    letter-spacing: -0.03em; line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .contact-title em { font-style: italic; color: var(--periwinkle); }
+  .contact-sub { color: rgba(255,255,255,0.6); font-size: 1.05rem; margin-bottom: 60px; }
+  .contact-cards {
+    display: flex; justify-content: center; gap: 20px;
+    flex-wrap: wrap; margin-bottom: 60px;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 28px 36px;
+    color: var(--white); text-align: left;
+    min-width: 200px;
+    transition: all 0.3s ease;
+  }
+  .contact-card:hover { background: rgba(139,157,195,0.2); transform: translateY(-4px); }
+  .contact-card-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--periwinkle-light); margin-bottom: 8px; }
+  .contact-card-value { font-size: 1rem; font-weight: 500; }
+  .contact-closing {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1.1rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111420; padding: 24px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: rgba(255,255,255,0.3); font-size: 0.78rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expand {
+    0%, 100% { width: 40px; } 50% { width: 70px; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section, .brands, .contact { padding: 70px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-scroll { left: 24px; }
+    .about-grid, .skills-grid, .journalism-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Natasha Seixas</div>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#skills">Habilidades</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#journalism">Periodismo</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">LETRAS</div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ Content Manager · Redactora Creativa · Comunicadora</div>
+    <h1>Natasha<br><em>Seixas.</em></h1>
+    <p class="hero-quote">"Donde hay letras, yo estoy."</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">Ver proyectos →</a>
+      <a href="#contact" class="btn-secondary">Contáctame</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about" id="about">
+  <span class="section-label">01 — Sobre mí</span>
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img src="images/img_001.jpg" alt="Natasha Seixas" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:24px;">
+      <div class="about-accent-box">"Mientras más humanizada sea una marca, más conecta."</div>
+    </div>
+    <div class="about-text">
+      <h2 class="section-title">Licenciada en<br>Comunicación.</h2>
+      <p>Tengo 22 años y soy <strong>redactora apasionada</strong> con experiencia en periodismo, publicidad y creación de contenido digital. He trabajado para marcas en 4 países: Ecuador, Colombia, Perú y República Dominicana.</p>
+      <p>Me encanta <strong>contar historias que enganchan</strong>, subirme a las tendencias y darle voz auténtica a las marcas. Creo que el contenido no es solo información: es emoción, conexión y comunidad.</p>
+      <p>He pasado por medios de comunicación como <strong>Ecuavisa</strong> y <strong>Revista Vistazo</strong>, lo que me dio el rigor periodístico que hoy aplico al mundo del marketing digital.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div>
+          <div class="stat-num">4</div>
+          <div class="stat-label">Mercados internacionales</div>
+        </div>
+        <div>
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Marcas trabajadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section class="skills" id="skills">
+  <span class="section-label reveal">02 — Habilidades</span>
+  <h2 class="section-title reveal">Lo que sé hacer<br><em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--periwinkle)">bien.</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">✍️</div>
+      <h3>Redacción Creativa</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Copywriting</span>
+        <span class="skill-tag">Storytelling</span>
+        <span class="skill-tag">Guiones</span>
+        <span class="skill-tag">Landing pages</span>
+        <span class="skill-tag">Cuñas</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📱</div>
+      <h3>Redes Sociales</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Instagram</span>
+        <span class="skill-tag">TikTok</span>
+        <span class="skill-tag">Captions</span>
+        <span class="skill-tag">Trends</span>
+        <span class="skill-tag">Análisis de métricas</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎯</div>
+      <h3>Estrategia de Contenido</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Calendarios editoriales</span>
+        <span class="skill-tag">Estrategia de marca</span>
+        <span class="skill-tag">SEO</span>
+        <span class="skill-tag">Campañas</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎬</div>
+      <h3>Producción Audiovisual</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">CapCut</span>
+        <span class="skill-tag">Canva</span>
+        <span class="skill-tag">Premiere</span>
+        <span class="skill-tag">Photoshop</span>
+        <span class="skill-tag">Locución</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📰</div>
+      <h3>Periodismo</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Reportería</span>
+        <span class="skill-tag">Artículos</span>
+        <span class="skill-tag">Entrevistas</span>
+        <span class="skill-tag">Cobertura</span>
+        <span class="skill-tag">Presentación</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🤖</div>
+      <h3>Herramientas</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">Office</span>
+        <span class="skill-tag">IA creativa</span>
+        <span class="skill-tag">Community mgmt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCAS -->
+<section class="brands" id="brands">
+  <span class="section-label">03 — Marcas</span>
+  <h2 class="section-title">He trabajado con<br>estas marcas.</h2>
+  <div class="brands-grid">
+    <div class="brand-pill">La Ganga</div>
+    <div class="brand-pill">Procarsa · Surpapel</div>
+    <div class="brand-pill">Gomedic</div>
+    <div class="brand-pill">EcuaSuiza Seguros</div>
+    <div class="brand-pill">Junta de Beneficencia de Guayaquil</div>
+    <div class="brand-pill">Jucy by HealthyDrinks</div>
+    <div class="brand-pill">Upper</div>
+    <div class="brand-pill">Agencia La Destilería Creativa</div>
+    <div class="brand-pill">Ecuavisa</div>
+    <div class="brand-pill">Revista Vistazo</div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="projects" id="projects">
+  <div class="projects-intro">
+    <div>
+      <span class="section-label">04 — Proyectos</span>
+      <h2 class="section-title" style="margin-bottom:0">Trabajos<br>destacados.</h2>
+    </div>
+    <div class="edit-note">
+      ✏️ <span>Haz clic en <strong>"+ Agregar proyecto"</strong> para añadir tus trabajos de Upper</span>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- PROYECTOS UPPER DINÁMICOS -->
+    <div id="upper-projects-list"></div>
+
+
+    <!-- UPPER CARRUSEL -->
+    <div class="project-card reveal" style="grid-column: span 2;">
+      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
+        <!-- Carrusel -->
+        <div id="upper-carousel" style="display:flex;transition:transform 0.4s ease;width:800%;">
+          <img src="images/img_002.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_003.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_004.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_005.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_006.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_007.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_008.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_009.png" style="width:12.5%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" />
+        </div>
+        <!-- Controles -->
+        <button onclick="upperPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
+        <button onclick="upperNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        <!-- Contador -->
+        <div id="upper-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 8</div>
+        <!-- Dots -->
+        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;" id="upper-dots">
+          <div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Contenido educativo · Social Media · Upper</span>
+        <h3>Carrusel "Guía rápida para comprar afuera" — Upper Ecuador</h3>
+        <p>Carrusel educativo de 8 slides con el personaje "Michiprofesor" — adaptación de información técnica compleja sobre el proceso de compra internacional en contenido entretenido, accesible y con formato meme. Logró 98 likes y alta interacción.</p>
+        <a href="https://www.instagram.com/upper.ec" target="_blank" class="project-link">Ver cuenta de Upper ↗</a>
+      </div>
+    </div>
+
+    <script>
+      var upperIdx = 0;
+      var upperTotal = 8;
+      function upperUpdate() {
+        document.getElementById('upper-carousel').style.transform = 'translateX(-' + (upperIdx * 12.5) + '%)';
+        document.getElementById('upper-counter').textContent = (upperIdx + 1) + ' / ' + upperTotal;
+        document.querySelectorAll('.upper-dot').forEach(function(d, i) {
+          d.style.background = i === upperIdx ? 'white' : 'rgba(255,255,255,0.4)';
+        });
+      }
+      function upperNext() { upperIdx = (upperIdx + 1) % upperTotal; upperUpdate(); }
+      function upperPrev() { upperIdx = (upperIdx - 1 + upperTotal) % upperTotal; upperUpdate(); }
+    </script>
+
+    <!-- UPPER CARRUSEL 2 - Amazon Prime Day -->
+    <div class="project-card reveal" style="grid-column: span 2;">
+      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
+        <div id="upper2-carousel" style="display:flex;transition:transform 0.4s ease;width:700%;">
+          <img src="images/img_010.png" style="width:14.2857%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_011.png" style="width:14.2857%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_012.png" style="width:14.2857%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_013.png" style="width:14.2857%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_014.png" style="width:14.2857%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_015.png" style="width:14.2857%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_016.png" style="width:14.2857%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" />
+        </div>
+        <button onclick="upper2Prev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
+        <button onclick="upper2Next()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        <div id="upper2-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 7</div>
+        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;" id="upper2-dots">
+          <div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper2-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Contenido meme · Campaña Amazon Prime Day · Upper</span>
+        <h3>Carrusel "¿Quién sufre más?" — Amazon Prime Day Upper Ecuador</h3>
+        <p>Carrusel de 7 slides usando humor y memes virales (Bob Esponja, Pitbull, Sonic) para comunicar tips de compra durante Amazon Prime Day. Storytelling con formato entretenido que adapta información técnica sobre aranceles, consolidación y Prime a un lenguaje cercano y jovial. 65 likes y alta viralidad.</p>
+        <a href="https://www.instagram.com/upper.ec" target="_blank" class="project-link">Ver cuenta de Upper ↗</a>
+      </div>
+    </div>
+
+    <script>
+      var upper2Idx = 0;
+      var upper2Total = 7;
+      function upper2Update() {
+        document.getElementById('upper2-carousel').style.transform = 'translateX(-' + (upper2Idx * (100/7)) + '%)';
+        document.getElementById('upper2-counter').textContent = (upper2Idx + 1) + ' / ' + upper2Total;
+        document.querySelectorAll('.upper2-dot').forEach(function(d, i) {
+          d.style.background = i === upper2Idx ? 'white' : 'rgba(255,255,255,0.4)';
+        });
+      }
+      function upper2Next() { upper2Idx = (upper2Idx + 1) % upper2Total; upper2Update(); }
+      function upper2Prev() { upper2Idx = (upper2Idx - 1 + upper2Total) % upper2Total; upper2Update(); }
+    </script>
+
+    <!-- UPPER CARRUSEL 3 - Amazon Tax Free -->
+    <div class="project-card reveal" style="grid-column: span 2;">
+      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
+        <div id="upper3-carousel" style="display:flex;transition:transform 0.4s ease;width:300%;">
+          <img src="images/img_017.png" style="width:33.3333%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_018.png" style="width:33.3333%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" /><img src="images/img_019.png" style="width:33.3333%;object-fit:contain;max-height:500px;display:block;margin:0 auto;" />
+        </div>
+        <button onclick="upper3Prev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
+        <button onclick="upper3Next()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        <div id="upper3-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 3</div>
+        <!-- Stat badge -->
+        <div style="position:absolute;top:16px;left:16px;background:#e53e3e;color:white;padding:6px 14px;border-radius:100px;font-size:0.78rem;font-weight:700;">❤️ 399 likes · 173 compartidos</div>
+        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
+          <div class="upper3-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="upper3-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="upper3-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Nuevo beneficio · Lanzamiento · Upper Ecuador</span>
+        <h3>🔥 "Nuestra bodega en Miami ahora es Amazon Tax Free" — Upper</h3>
+        <p>Carrusel de lanzamiento de nuevo beneficio: bodega Amazon Tax Free en Miami. Copy persuasivo con comparativa visual "Con Tax vs Sin Tax" que demostró el ahorro de forma inmediata y clara. El post más viral del portafolio con <strong>399 likes, 35 comentarios y 173 compartidos</strong>.</p>
+        <a href="https://www.instagram.com/upper.ec" target="_blank" class="project-link">Ver cuenta de Upper ↗</a>
+      </div>
+    </div>
+
+    <script>
+      var upper3Idx = 0;
+      var upper3Total = 3;
+      function upper3Update() {
+        document.getElementById('upper3-carousel').style.transform = 'translateX(-' + (upper3Idx * (100/3)) + '%)';
+        document.getElementById('upper3-counter').textContent = (upper3Idx + 1) + ' / ' + upper3Total;
+        document.querySelectorAll('.upper3-dot').forEach(function(d, i) {
+          d.style.background = i === upper3Idx ? 'white' : 'rgba(255,255,255,0.4)';
+        });
+      }
+      function upper3Next() { upper3Idx = (upper3Idx + 1) % upper3Total; upper3Update(); }
+      function upper3Prev() { upper3Idx = (upper3Idx - 1 + upper3Total) % upper3Total; upper3Update(); }
+    </script>
+
+    <div class="project-card reveal" style="grid-column: span 2;">
+      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
+        <div id="rdcar-carousel" style="display:flex;transition:transform 0.4s ease;width:400%;"><img src="images/img_020.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_021.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_022.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_023.png" style="width:25.0000%;object-fit:contain;max-height:480px;display:block;" /></div>
+        <button onclick="rdcarPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
+        <button onclick="rdcarNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        <div id="rdcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 4</div>
+        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="rdcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div></div>
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Contenido meme · Tarifas · República Dominicana</span>
+        <h3>"Eso si ke no" — Tarifas y beneficios Upper RD</h3>
+        <p>Carrusel de 4 slides adaptado al mercado dominicano usando el meme del axolote para comunicar las tarifas de Upper RD desde USA y España de forma divertida y directa.</p>
+        <a href="https://www.instagram.com/upper_do" target="_blank" class="project-link">Ver cuenta ↗</a>
+      </div>
+    </div>
+    <script>
+      var rdcarIdx = 0, rdcarTotal = 4;
+      function rdcarUpdate() {
+        document.getElementById('rdcar-carousel').style.transform = 'translateX(-' + (rdcarIdx * (100/4)) + '%)';
+        document.getElementById('rdcar-counter').textContent = (rdcarIdx + 1) + ' / ' + rdcarTotal;
+        document.querySelectorAll('.rdcar-dot').forEach(function(d,i){ d.style.background = i===rdcarIdx ? 'white' : 'rgba(255,255,255,0.4)'; });
+      }
+      function rdcarNext() { rdcarIdx = (rdcarIdx+1)%rdcarTotal; rdcarUpdate(); }
+      function rdcarPrev() { rdcarIdx = (rdcarIdx-1+rdcarTotal)%rdcarTotal; rdcarUpdate(); }
+    </script>
+
+    <div class="project-card reveal" style="grid-column: span 2;">
+      <div style="position:relative;overflow:hidden;border-radius:20px 20px 0 0;background:#0a0f1e;">
+        <div id="colcar-carousel" style="display:flex;transition:transform 0.4s ease;width:500%;"><img src="images/img_024.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_025.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_026.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_027.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /><img src="images/img_028.png" style="width:20.0000%;object-fit:contain;max-height:480px;display:block;" /></div>
+        <button onclick="colcarPrev()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">‹</button>
+        <button onclick="colcarNext()" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;">›</button>
+        <div id="colcar-counter" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">1 / 5</div>
+        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:white;transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div><div class="colcar-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);transition:background 0.3s;"></div></div>
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Upper Tips · Estrategia de ahorro · Colombia · 422 vistas</span>
+        <h3>"Compra tenis originales más baratos" — Upper Tips Colombia</h3>
+        <p>Carrusel de 5 slides con tips estratégicos para comprar tenis originales hasta un 70% más baratos desde el extranjero — comparativa de precios Colombia vs USA, cupones y tallas big kids. 422 vistas orgánicas.</p>
+        <a href="https://www.instagram.com/upper_co" target="_blank" class="project-link">Ver cuenta ↗</a>
+      </div>
+    </div>
+    <script>
+      var colcarIdx = 0, colcarTotal = 5;
+      function colcarUpdate() {
+        document.getElementById('colcar-carousel').style.transform = 'translateX(-' + (colcarIdx * (100/5)) + '%)';
+        document.getElementById('colcar-counter').textContent = (colcarIdx + 1) + ' / ' + colcarTotal;
+        document.querySelectorAll('.colcar-dot').forEach(function(d,i){ d.style.background = i===colcarIdx ? 'white' : 'rgba(255,255,255,0.4)'; });
+      }
+      function colcarNext() { colcarIdx = (colcarIdx+1)%colcarTotal; colcarUpdate(); }
+      function colcarPrev() { colcarIdx = (colcarIdx-1+colcarTotal)%colcarTotal; colcarUpdate(); }
+    </script>
+
+    <!-- LANDING PAGE UPPER DÍA DEL PADRE -->
+    <div class="project-card reveal">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #0a0f1e, #1a3a5c); padding: 32px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:12px;">
+        <div style="background:#6EE07F;color:#0a0f1e;padding:6px 16px;border-radius:100px;font-size:0.75rem;font-weight:800;letter-spacing:0.08em;">LANDING PAGE ACTIVA ↗</div>
+        <p style="color:white;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;line-height:1.3;margin:0;">🎁 Sorprende a PAPÁ<br>con un regalo inesperado</p>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.78rem;margin:0;">Upper Ecuador · Día del Padre 2025</p>
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Copywriting · Landing Page · Día del Padre · Upper EC</span>
+        <h3>Landing page "Sorprende a Papá" — Upper Ecuador</h3>
+        <p>Redacción de landing page con 5 perfiles de papá (tecnológico, manualidades, futbolero, fashionista y coleccionista) con descuentos reales de hasta 80% en productos de Amazon, Nordstrom Rack y tiendas internacionales. Copy persuasivo con CTA integrados y links directos a tiendas.</p>
+        <a href="https://upper.com.ec/info/sorprende-a-papa-con-un-regalo-inesperado" target="_blank" class="project-link">Ver landing en vivo ↗</a>
+      </div>
+    </div>
+
+    <!-- NOTIFICACIONES PUSH UPPER -->
+    <div class="project-card reveal">
+      <div style="background: linear-gradient(135deg, #1a1f3a, #2d3561); padding: 32px 28px; border-radius: 20px 20px 0 0;">
+        <div style="background:rgba(110,224,127,0.15);color:#6EE07F;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;display:inline-block;margin-bottom:20px;">NOTIFICACIONES IN-APP · UPPER</div>
+
+        <!-- Notificación 1 -->
+        <div style="background:rgba(255,255,255,0.95);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:10px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+          <div style="width:40px;height:40px;background:#0a0f1e;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:1.1rem;">🎄</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:0.78rem;font-weight:700;color:#1a1f3a;margin:0 0 2px;line-height:1.3;">¡Embarca antes del viernes y ten tus compras para Navidad! 🎄</p>
+            <p style="font-size:0.72rem;color:#666;margin:0;line-height:1.3;">Asegura que lleguen a tiempo para las fiestas embarcando ahora en la app.</p>
+          </div>
+          <span style="font-size:0.65rem;color:#999;flex-shrink:0;">9:41 AM</span>
+        </div>
+
+        <!-- Notificación 2 -->
+        <div style="background:rgba(255,255,255,0.95);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:10px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+          <div style="width:40px;height:40px;background:#0a0f1e;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:1.1rem;">📦</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:0.78rem;font-weight:700;color:#1a1f3a;margin:0 0 2px;line-height:1.3;">Completa tus datos y recibe tus compras a tiempo 📦</p>
+            <p style="font-size:0.72rem;color:#666;margin:0;line-height:1.3;">Actualiza tu información de identidad en la app y recibe tus pedidos sin demoras.</p>
+          </div>
+          <span style="font-size:0.65rem;color:#999;flex-shrink:0;">9:41 AM</span>
+        </div>
+
+        <!-- Notificación 3 -->
+        <div style="background:rgba(255,255,255,0.95);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:10px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+          <div style="width:40px;height:40px;background:#0a0f1e;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:1.1rem;">✈️</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:0.78rem;font-weight:700;color:#1a1f3a;margin:0 0 2px;line-height:1.3;">La aerolínea modificó tu vuelo ✈️</p>
+            <p style="font-size:0.72rem;color:#666;margin:0;line-height:1.3;">Revisa aquí los detalles actualizados de tu embarque.</p>
+          </div>
+          <span style="font-size:0.65rem;color:#999;flex-shrink:0;">9:41 AM</span>
+        </div>
+
+        <!-- Notificación 4 -->
+        <div style="background:rgba(255,255,255,0.95);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:10px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+          <div style="width:40px;height:40px;background:#0a0f1e;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:1.1rem;">🎄</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:0.78rem;font-weight:700;color:#1a1f3a;margin:0 0 2px;line-height:1.3;">La Navidad viene con descuentazos 🎄✨</p>
+            <p style="font-size:0.72rem;color:#666;margin:0;line-height:1.3;">Después de cenar caza las mejores ofertas navideñas. Encuéntralas aquí 👆👀</p>
+          </div>
+          <span style="font-size:0.65rem;color:#999;flex-shrink:0;">9:41 AM</span>
+        </div>
+
+        <!-- Notificación 5 -->
+        <div style="background:rgba(255,255,255,0.95);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+          <div style="width:40px;height:40px;background:#0a0f1e;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:1.1rem;">👙</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:0.78rem;font-weight:700;color:#1a1f3a;margin:0 0 2px;line-height:1.3;">¡Trajes de baño y accesorios desde $5! 👙☀️</p>
+            <p style="font-size:0.72rem;color:#666;margin:0;line-height:1.3;">Aprovecha las ofertas, y envíalas a tu casillero para ahorrar más en este carnaval. 📦</p>
+          </div>
+          <span style="font-size:0.65rem;color:#999;flex-shrink:0;">9:41 AM</span>
+        </div>
+
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Copywriting · Notificaciones Push · In-App · Upper</span>
+        <h3>Textos para notificaciones push — Upper App</h3>
+        <p>Redacción de notificaciones in-app para la aplicación de Upper adaptadas a temporalidades clave: Navidad, Carnaval, alertas de vuelo y recordatorios de acción. Copy breve, directo y con emojis estratégicos para maximizar la tasa de apertura.</p>
+      </div>
+    </div>
+    <!-- Botón agregar Upper -->
+    <div class="upper-section" id="upper-add-section">
+      <h3>✦ Proyectos de Upper</h3>
+      <p>Agrega aquí tus trabajos de Upper — copys, campañas, guiones o lo que quieras mostrar. Cada tarjeta quedará guardada en esta página.</p>
+      <button class="upper-add-btn" onclick="openModal()">+ Agregar proyecto de Upper</button>
+    </div>
+
+    <!-- La Ganga Copys 1 -->
+    <div class="project-card reveal">
+      <img src="images/img_029.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+      <div class="project-body">
+        <span class="project-cat">Redacción Creativa · Social Media</span>
+        <h3>Copys & Campaña Black Days — La Ganga</h3>
+        <p>Copys para redes sociales incluyendo el 2024 Wrapped y la campaña "Toda excusa es válida". Contenido adaptado a la voz y tono de la marca.</p>
+        <a href="https://www.instagram.com/lagangaec" target="_blank" class="project-link">Ver cuenta ↗</a>
+      </div>
+    </div>
+
+    <!-- La Ganga Copys 2 -->
+    <div class="project-card reveal">
+      <img src="images/img_030.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+      <div class="project-body">
+        <span class="project-cat">Redacción Creativa · Campaña Black Days</span>
+        <h3>Black Days "Debí aprovechar más promos" — La Ganga</h3>
+        <p>Copys creativos para campaña de Black Days con storytelling de humor, referenciando tendencias culturales como Bad Bunny para conectar con la audiencia.</p>
+        <a href="https://www.instagram.com/lagangaec" target="_blank" class="project-link">Ver cuenta ↗</a>
+      </div>
+    </div>
+
+    <!-- Junta Beneficencia -->
+    <div class="project-card reveal">
+      <img src="images/img_031.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+      <div class="project-body">
+        <span class="project-cat">Redacción Creativa · Salud</span>
+        <h3>Contenido educativo — Hospital Dr. Roberto Gilbert</h3>
+        <p>Copys educativos sobre servicios del hospital pediátrico adaptando información médica compleja en contenido accesible y dinámico para redes sociales.</p>
+        <a href="https://www.instagram.com/juntadebeneficencia.ec" target="_blank" class="project-link">Ver cuenta ↗</a>
+      </div>
+    </div>
+
+    <!-- Procarsa / EcuaSuiza -->
+    <div class="project-card reveal">
+      <img src="images/img_032.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+      <div class="project-body">
+        <span class="project-cat">Social Media · Seguros · Industria</span>
+        <h3>Procarsa · Surpapel — EcuaSuiza Seguros</h3>
+        <p>Copys para redes sociales de Procarsa y piezas publicitarias para EcuaSuiza Seguros, adaptando mensajes al tono corporativo de cada marca.</p>
+        <a href="https://www.instagram.com/procarsa.ec" target="_blank" class="project-link">Ver Procarsa ↗</a>
+      </div>
+    </div>
+
+    <!-- Vallas La Ganga -->
+    <div class="project-card reveal">
+      <img src="images/img_033.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+      <div class="project-body">
+        <span class="project-cat">Copywriting · OOH · Vallas publicitarias</span>
+        <h3>Vallas "En la cena imperfecta" — La Ganga</h3>
+        <p>Redacción de copys para vallas publicitarias de campaña navideña de La Ganga, con mensajes cortos, impactantes y adaptados al formato exterior.</p>
+        <a href="https://www.instagram.com/lagangaec" target="_blank" class="project-link">Ver cuenta ↗</a>
+      </div>
+    </div>
+
+    <!-- Landing EcuaSuiza -->
+    <div class="project-card reveal">
+      <img src="images/img_034.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+      <div class="project-body">
+        <span class="project-cat">Copywriting · Landing Page</span>
+        <h3>Landing page — EcuaSuiza Seguros + BIESS</h3>
+        <p>Redacción completa del copy para landing page de seguros hipotecarios, con estructura orientada a conversión y lenguaje cercano al usuario.</p>
+        <span class="project-link" style="color:var(--gray);cursor:default">Proyecto interno</span>
+      </div>
+    </div>
+
+    <!-- Menciones y cuñas -->
+    <div class="project-card reveal">
+      <img src="images/img_035.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+      <div class="project-body">
+        <span class="project-cat">Copywriting · Radio · Cuñas publicitarias</span>
+        <h3>Menciones y cuñas — Campaña Black Days La Ganga</h3>
+        <p>Redacción de cuñas radiales y menciones para la campaña "Toda excusa es válida", con storytelling de humor y llamada a la acción clara.</p>
+        <a href="https://www.instagram.com/lagangaec" target="_blank" class="project-link">Ver cuenta ↗</a>
+      </div>
+    </div>
+
+  </div>
+  <!-- GUIONES DE VIDEO -->
+  <div style="margin-top:60px;">
+    <span class="section-label" style="display:block;margin-bottom:8px;">Guiones · Videos · Upper Internacional</span>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;">Guiones producidos<br>en 4 países.</h3>
+    <p style="color:var(--gray);font-size:0.9rem;margin-bottom:32px;">Clic en cualquier video para verlo completo.</p>
+
+    <!-- ECUADOR -->
+    <div style="margin-bottom:40px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <span style="font-size:1.4rem;">🇪🇨</span>
+        <span style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);">Ecuador — upper.ec</span>
+        <div style="flex:1;height:1px;background:var(--periwinkle-pale);"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        
+      <div style="position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:#111;" onclick="window.open('https://www.instagram.com/reel/DSGYHwckUX-/','_blank')">
+        <img src="images/img_036.png" style="width:100%;display:block;height:320px;object-fit:cover;opacity:0.85;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85"/>
+        <!-- Play button -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:1.6rem;margin-left:4px;">▶</span>
+          </div>
+        </div>
+        <!-- Platform badge -->
+        <div style="position:absolute;top:12px;left:12px;background:#E1306C;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">▶️ Instagram</div>
+        <!-- Country badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">🇪🇨 EC</div>
+        <!-- Info -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,0.85));">
+          <p style="color:white;font-size:0.85rem;font-weight:600;margin:0 0 4px;">¿Quieres ganar una giftcard de $400?</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.75rem;margin:0;">Guión estilo quiz/concurso con dinámica de preguntas</p>
+        </div>
+      </div>
+        
+      <div style="position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:#111;" onclick="window.open('https://www.instagram.com/reel/DR28OBGDkKn/','_blank')">
+        <img src="images/img_037.png" style="width:100%;display:block;height:320px;object-fit:cover;opacity:0.85;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85"/>
+        <!-- Play button -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:1.6rem;margin-left:4px;">▶</span>
+          </div>
+        </div>
+        <!-- Platform badge -->
+        <div style="position:absolute;top:12px;left:12px;background:#E1306C;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">▶️ Instagram</div>
+        <!-- Country badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">🇪🇨 EC</div>
+        <!-- Info -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,0.85));">
+          <p style="color:white;font-size:0.85rem;font-weight:600;margin:0 0 4px;">Tips desde la bodega de Upper</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.75rem;margin:0;">Guión informativo grabado en bodega con vocero de marca</p>
+        </div>
+      </div>
+        
+      <div style="position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:#111;" onclick="window.open('https://vt.tiktok.com/ZSuVfjqEw/','_blank')">
+        <img src="images/img_038.png" style="width:100%;display:block;height:320px;object-fit:cover;opacity:0.85;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85"/>
+        <!-- Play button -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:1.6rem;margin-left:4px;">▶</span>
+          </div>
+        </div>
+        <!-- Platform badge -->
+        <div style="position:absolute;top:12px;left:12px;background:#000000;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">🎵 TikTok</div>
+        <!-- Country badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">🇪🇨 EC</div>
+        <!-- Info -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,0.85));">
+          <p style="color:white;font-size:0.85rem;font-weight:600;margin:0 0 4px;">Contenido orgánico en calle</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.75rem;margin:0;">Guión para contenido espontáneo y orgánico en exteriores</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- REPÚBLICA DOMINICANA -->
+    <div style="margin-bottom:40px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <span style="font-size:1.4rem;">🇩🇴</span>
+        <span style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);">República Dominicana — upper_do</span>
+        <div style="flex:1;height:1px;background:var(--periwinkle-pale);"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+        
+      <div style="position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:#111;" onclick="window.open('https://www.instagram.com/reel/DUlYpaFDU5w/','_blank')">
+        <img src="images/img_039.png" style="width:100%;display:block;height:320px;object-fit:cover;opacity:0.85;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85"/>
+        <!-- Play button -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:1.6rem;margin-left:4px;">▶</span>
+          </div>
+        </div>
+        <!-- Platform badge -->
+        <div style="position:absolute;top:12px;left:12px;background:#E1306C;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">▶️ Instagram</div>
+        <!-- Country badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">🇩🇴 RD</div>
+        <!-- Info -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,0.85));">
+          <p style="color:white;font-size:0.85rem;font-weight:600;margin:0 0 4px;">¡Ya tenemos agencia en RD!</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.75rem;margin:0;">Guión para vocero local anunciando la apertura de agencia Upper en República Dominicana</p>
+        </div>
+      </div>
+        
+      <div style="position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:#111;" onclick="window.open('https://vt.tiktok.com/ZSuVfabQ5/','_blank')">
+        <img src="images/img_040.png" style="width:100%;display:block;height:320px;object-fit:cover;opacity:0.85;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85"/>
+        <!-- Play button -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:1.6rem;margin-left:4px;">▶</span>
+          </div>
+        </div>
+        <!-- Platform badge -->
+        <div style="position:absolute;top:12px;left:12px;background:#000000;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">🎵 TikTok</div>
+        <!-- Country badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">🇩🇴 RD</div>
+        <!-- Info -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,0.85));">
+          <p style="color:white;font-size:0.85rem;font-weight:600;margin:0 0 4px;">Black Friday — New Balance 530</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.75rem;margin:0;">Guión para influencer femenina sobre compras internacionales</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- COLOMBIA -->
+    <div style="margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <span style="font-size:1.4rem;">🇨🇴</span>
+        <span style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);">Colombia — upper_co</span>
+        <div style="flex:1;height:1px;background:var(--periwinkle-pale);"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+        
+      <div style="position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:#111;" onclick="window.open('https://www.instagram.com/reel/DT1KXSkCdZ5/','_blank')">
+        <img src="images/img_041.png" style="width:100%;display:block;height:320px;object-fit:cover;opacity:0.85;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85"/>
+        <!-- Play button -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:1.6rem;margin-left:4px;">▶</span>
+          </div>
+        </div>
+        <!-- Platform badge -->
+        <div style="position:absolute;top:12px;left:12px;background:#E1306C;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">▶️ Instagram</div>
+        <!-- Country badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">🇨🇴 COL</div>
+        <!-- Info -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,0.85));">
+          <p style="color:white;font-size:0.85rem;font-weight:600;margin:0 0 4px;">$5+IVA por libra — explicación de tarifas</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.75rem;margin:0;">Guión informativo con vocero para mercado colombiano</p>
+        </div>
+      </div>
+        
+      <div style="position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:#111;" onclick="window.open('https://www.instagram.com/reel/DTQSoBUDpx2/','_blank')">
+        <img src="images/img_042.png" style="width:100%;display:block;height:320px;object-fit:cover;opacity:0.85;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85"/>
+        <!-- Play button -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:1.6rem;margin-left:4px;">▶</span>
+          </div>
+        </div>
+        <!-- Platform badge -->
+        <div style="position:absolute;top:12px;left:12px;background:#E1306C;color:white;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;">▶️ Instagram</div>
+        <!-- Country badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:600;">🇨🇴 COL</div>
+        <!-- Info -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,0.85));">
+          <p style="color:white;font-size:0.85rem;font-weight:600;margin:0 0 4px;">Comunicado: Decreto 1474 e IVA</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.75rem;margin:0;">Guión de crisis — comunicado oficial sobre cambios de impuestos</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PERIODISMO -->
+<section class="journalism" id="journalism">
+  <span class="section-label reveal">05 — Periodismo</span>
+  <h2 class="section-title reveal">Mis trabajos<br>periodísticos.</h2>
+  <div class="journalism-grid">
+    <div class="journalism-card reveal">
+      <div class="j-header">
+        <div class="j-media">Ecuavisa Digital · Economía</div>
+        <h3>Empleadores con deudas al IESS tendrán hasta 6 años para pagar</h3>
+      </div>
+      <div class="j-body">
+        <p>Artículo informativo sobre el proceso legal para que empleadores con deudas pendientes al IESS puedan acogerse a un acuerdo de pago.</p>
+        <a href="https://www.ecuavisa.com/economia/los-empleadores-con-deudas-pendientes-tendran-un-maximo-de-seis-anos-para-pagarle-al-iess-20240430-0025.html" target="_blank" class="j-link">Leer artículo ↗</a>
+      </div>
+    </div>
+    <div class="journalism-card reveal">
+      <div class="j-header">
+        <div class="j-media">Ecuavisa Digital · Entretenimiento</div>
+        <h3>El curioso reencuentro de Jennifer Aniston y David Schwimmer en el Super Bowl</h3>
+      </div>
+      <div class="j-body">
+        <p>Cobertura del reencuentro de los actores de Friends en un anuncio publicitario emitido durante el Super Bowl, con análisis del impacto en redes.</p>
+        <a href="https://www.ecuavisa.com/television/el-curioso-reencuentro-de-jennifer-aniston-y-david-schwimmer-en-un-anuncio-del-super-bowl-20240207-0069.html" target="_blank" class="j-link">Leer artículo ↗</a>
+      </div>
+    </div>
+    <div class="journalism-card reveal">
+      <div class="j-header">
+        <div class="j-media">Ecuavisa Digital · Salud & Mundo</div>
+        <h3>AstraZeneca admitió que su vacuna puede provocar efectos secundarios</h3>
+      </div>
+      <div class="j-body">
+        <p>Artículo sobre la admisión de AstraZeneca en documentos legales de que su vacuna contra el COVID-19 puede causar efectos secundarios en casos raros.</p>
+        <a href="https://www.ecuavisa.com/mundo/astrazeneca-admitio-en-un-documento-legal-que-su-vacuna-contra-el-covid-19-puede-provocar-efectos-secundarios-20240430-0010.html" target="_blank" class="j-link">Leer artículo ↗</a>
+      </div>
+    </div>
+    <div class="journalism-card reveal">
+      <div class="j-header">
+        <div class="j-media">Revista Vistazo · Enfoque</div>
+        <h3>Nuevas técnicas agrícolas en feria maicera</h3>
+      </div>
+      <div class="j-body">
+        <p>Cobertura de la expoferia maicera en Manabí, donde se presentaron innovaciones tecnológicas para el sector agrícola ecuatoriano.</p>
+        <a href="https://www.vistazo.com/enfoque/nuevas-tecnicas-y-tecnologias-agricolas-se-presentaron-en-feria-maicera-FC3774777" target="_blank" class="j-link">Leer artículo ↗</a>
+      </div>
+    </div>
+    <div class="journalism-card reveal">
+      <div class="j-header">
+        <div class="j-media">Revista Vistazo · Enfoque</div>
+        <h3>Empresas apuestan por energía sostenible</h3>
+      </div>
+      <div class="j-body">
+        <p>Reportaje sobre empresas ecuatorianas como Pronaco y Corporación GPF-FEMSA que implementan estrategias de sostenibilidad energética.</p>
+        <a href="https://www.vistazo.com/enfoque/empresas-apuestan-por-un-uso-sostenible-de-la-energia-y-del-agua-FC3477799" target="_blank" class="j-link">Leer artículo ↗</a>
+      </div>
+    </div>
+    <div class="journalism-card reveal">
+      <div class="j-header">
+        <div class="j-media">Revista Vistazo · Enfoque</div>
+        <h3>Guayaquil vivirá congreso de experiencias tecnológicas</h3>
+      </div>
+      <div class="j-body">
+        <p>Cobertura del lanzamiento de Innova-T Latam 2022, congreso con metaversos, NFTs y realidad virtual en Guayaquil.</p>
+        <a href="https://www.vistazo.com/enfoque/guayaquil-vivira-un-congreso-que-reunira-innovadoras-experiencias-tecnologicas-DA3147500" target="_blank" class="j-link">Leer artículo ↗</a>
+      </div>
+    </div>
+    <div class="journalism-card reveal" style="grid-column: span 1;">
+      <div class="j-header" style="background: linear-gradient(135deg, #1a3a5c, #2d5a8e);">
+        <div class="j-media" style="color:var(--periwinkle-light)">Revista Vistazo · Todos los artículos</div>
+        <h3 style="color:white">Ver todos mis artículos en Vistazo</h3>
+      </div>
+      <div class="j-body">
+        <p>10+ artículos publicados en Revista Vistazo sobre tecnología, sostenibilidad, economía y sectores productivos del Ecuador.</p>
+        <a href="https://www.vistazo.com/periodistas/-/meta/natasha-seixas-proano" target="_blank" class="j-link">Ver todos ↗</a>
+      </div>
+    </div>
+    <div class="journalism-card reveal">
+      <div class="j-header" style="background: linear-gradient(135deg, #1a1f3a, #2d3561);">
+        <div class="j-media" style="color:var(--periwinkle-light)">TV · Reportería</div>
+        <h3 style="color:white">Presentación de programas y reportajes</h3>
+      </div>
+      <div class="j-body">
+        <p>Experiencia frente a cámara como presentadora y reportera, con cobertura de eventos y producción de reportajes para televisión.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="https://bit.ly/3WukeoK" target="_blank" class="j-link">Ver programa ↗</a>
+          <a href="https://www.youtube.com/watch?v=u59GSxWWzH0" target="_blank" class="j-link">Ver reportaje ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIOS IMPRESOS -->
+  <div style="margin-top: 60px;">
+    <span class="section-label" style="display:block;margin-bottom:16px;">Medios Impresos · Revista Vistazo</span>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+      <div class="journalism-card reveal">
+        <a href="https://www.vistazo.com/portafolio/500-mayores-empresas" target="_blank">
+          <img src="images/img_043.jpg" alt="500 Mayores Empresas del Ecuador — Vistazo" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+        </a>
+        <div class="j-body">
+          <div class="j-media">Revista Vistazo · Edición Especial</div>
+          <p style="margin-top:8px;font-weight:600;color:var(--navy);font-size:0.95rem;">500 Mayores Empresas del Ecuador</p>
+          <p>Redacción del especial anual de las 500 empresas más grandes del Ecuador, analizando el impacto económico post-pandemia y la recuperación del sector productivo.</p>
+        </div>
+      </div>
+
+      <div class="journalism-card reveal">
+        <img src="images/img_044.jpg" alt="Planteles seguros y vigilados — Vistazo Calidad Educativa" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+        <div class="j-body">
+          <div class="j-media">Vistazo · Suplemento Calidad Educativa 2022</div>
+          <p style="margin-top:8px;font-weight:600;color:var(--navy);font-size:0.95rem;">Planteles seguros y vigilados</p>
+          <p>Reportaje sobre los protocolos de seguridad implementados en instituciones educativas del Ecuador: cámaras, guardianía y sistemas de alarma.</p>
+        </div>
+      </div>
+
+      <div class="journalism-card reveal">
+        <img src="images/img_045.jpg" alt="La adopción de la lectura como hábito — Vistazo" style="width:100%;display:block;border-radius:20px 20px 0 0;"/>
+        <div class="j-body">
+          <div class="j-media">Vistazo · Suplemento Calidad Educativa 2022</div>
+          <p style="margin-top:8px;font-weight:600;color:var(--navy);font-size:0.95rem;">La adopción de la lectura como hábito</p>
+          <p>Artículo sobre estrategias para fomentar la lectura en Ecuador, con datos del Ministerio de Cultura y testimonios de rectores de unidades educativas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contact">
+  <span class="section-label">06 — Contacto</span>
+  <h2 class="contact-title">¿Te enganchó<br><em>mi trabajo?</em></h2>
+  <p class="contact-sub">Hablemos. Siempre estoy abierta a nuevos proyectos y oportunidades.</p>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="contact-card-label">Celular</div>
+      <div class="contact-card-value">0979-608-968</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-label">Correo</div>
+      <div class="contact-card-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="355b544154465d5446505c4d54460700755258545c591b565a58">[email&#160;protected]</a></div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-label">Ubicación</div>
+      <div class="contact-card-value">Guayaquil, Ecuador</div>
+    </div>
+  </div>
+  <p class="contact-closing">"Donde hay letras, yo estoy." — Natasha Seixas</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Natasha Seixas Proaño</span>
+  <span>Licenciada en Comunicación · Guayaquil, Ecuador</span>
+</footer>
+
+<!-- MODAL AGREGAR PROYECTO -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>+ Agregar proyecto</h3>
+    <p>Completa los datos de tu proyecto de Upper u otra marca. Se agregará automáticamente a la página.</p>
+    <div class="form-group">
+      <label>Nombre del proyecto *</label>
+      <input type="text" id="proj-title" placeholder="Ej: Campaña Navidad — Upper">
+    </div>
+    <div class="form-group">
+      <label>Categoría</label>
+      <select id="proj-cat">
+        <option>Copywriting · Social Media</option>
+        <option>Redacción Creativa · Campaña</option>
+        <option>Guiones · Contenido Orgánico</option>
+        <option>Estrategia de Contenido</option>
+        <option>Influencer Marketing</option>
+        <option>Copy · Landing Page</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Descripción *</label>
+      <textarea id="proj-desc" placeholder="Describe brevemente el trabajo: qué hiciste, para qué marca, qué resultados tuvo..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Color de fondo</label>
+      <select id="proj-color">
+        <option value="linear-gradient(135deg,#6B3FA0,#9B59B6)">Morado</option>
+        <option value="linear-gradient(135deg,#1A3A5C,#2D5A8E)">Azul navy</option>
+        <option value="linear-gradient(135deg,#B8963E,#D4AC5A)">Dorado</option>
+        <option value="linear-gradient(135deg,#1B5E20,#2E7D32)">Verde</option>
+        <option value="linear-gradient(135deg,#8B9DC3,#5A6A9A)">Periwinkle</option>
+        <option value="linear-gradient(135deg,#1a237e,#1565c0)">Azul eléctrico</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Emoji del proyecto</label>
+      <input type="text" id="proj-emoji" placeholder="✍️" maxlength="2" value="✍️">
+    </div>
+    <div class="form-group">
+      <label>Link (opcional)</label>
+      <input type="url" id="proj-link" placeholder="https://...">
+    </div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-save" onclick="addProject()">Guardar proyecto ✓</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Modal
+  function openModal() {
+    document.getElementById('modal').classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.getElementById('proj-title').value = '';
+    document.getElementById('proj-desc').value = '';
+    document.getElementById('proj-link').value = '';
+    document.getElementById('proj-emoji').value = '✍️';
+  }
+
+  let projects = JSON.parse(localStorage.getItem('natasha_upper_projects') || '[]');
+  renderProjects();
+
+  function addProject() {
+    const title = document.getElementById('proj-title').value.trim();
+    const desc = document.getElementById('proj-desc').value.trim();
+    if (!title || !desc) { alert('Por favor completa el título y la descripción.'); return; }
+    const proj = {
+      id: Date.now(),
+      title,
+      cat: document.getElementById('proj-cat').value,
+      desc,
+      color: document.getElementById('proj-color').value,
+      emoji: document.getElementById('proj-emoji').value || '✍️',
+      link: document.getElementById('proj-link').value.trim(),
+    };
+    projects.push(proj);
+    localStorage.setItem('natasha_upper_projects', JSON.stringify(projects));
+    renderProjects();
+    closeModal();
+  }
+
+  function deleteProject(id) {
+    if (!confirm('¿Eliminar este proyecto?')) return;
+    projects = projects.filter(p => p.id !== id);
+    localStorage.setItem('natasha_upper_projects', JSON.stringify(projects));
+    renderProjects();
+  }
+
+  function renderProjects() {
+    const container = document.getElementById('upper-projects-list');
+    container.innerHTML = '';
+    projects.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'upper-proj-card';
+      card.innerHTML = `
+        <button class="delete-btn" onclick="deleteProject(${p.id})" title="Eliminar">✕</button>
+        <div class="upper-badge">Upper</div>
+        <div class="project-thumb" style="background:${p.color}">
+          <span>${p.emoji}</span>
+          <span class="project-thumb-label">Upper</span>
+        </div>
+        <div class="project-body">
+          <span class="project-cat">${p.cat}</span>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          ${p.link ? `<a href="${p.link}" target="_blank" class="project-link">Ver trabajo ↗</a>` : '<span style="color:var(--gray);font-size:0.85rem">Proyecto confidencial</span>'}
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Mover botón agregar al final si hay proyectos
+    const addSection = document.getElementById('upper-add-section');
+    if (projects.length > 0) {
+      addSection.style.gridColumn = '1';
+      addSection.style.padding = '28px';
+    }
+  }
+
+  // Smooth nav active state
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) nav.style.boxShadow = '0 4px 30px rgba(26,31,58,
