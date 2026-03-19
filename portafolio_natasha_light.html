@@ -237,12 +237,7 @@
     display: flex; justify-content: space-between; align-items: flex-end;
     margin-bottom: 60px; flex-wrap: wrap; gap: 20px;
   }
-  .edit-note {
-    background: #FFF9E6; border: 1px solid #F0D060;
-    border-radius: 12px; padding: 12px 20px;
-    font-size: 0.82rem; color: #7A6000;
-    display: flex; align-items: center; gap: 8px;
-  }
+
   .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; min-height: 200px; }
   .project-card {
     background: var(--white); border-radius: 24px;
@@ -491,15 +486,25 @@
     position: relative;
     width: 240px;
     flex-shrink: 0;
+    aspect-ratio: 9/19;
   }
   .carousel-screen-inner {
     overflow: hidden;
     border-radius: 36px;
-    margin: 8% 7% 8% 7%;
+    position: absolute;
+    top: 8%;
+    left: 7%;
+    right: 7%;
+    bottom: 8%;
   }
   .carousel-screen-inner img {
     width: 100%;
     display: block;
+    height: 100%;
+    object-fit: cover;
+  }
+  .carousel-screen {
+    position: relative !important;
   }
   .iphone-overlay {
     position: absolute;
@@ -695,20 +700,12 @@
 
 <!-- PROYECTOS -->
 <section class="projects" id="projects">
-  <div class="projects-intro">
-    <div>
-      <span class="section-label">04 — Proyectos</span>
-      <h2 class="section-title" style="margin-bottom:0">Trabajos<br>destacados.</h2>
-    </div>
-    <div class="edit-note">
-      ✏️ <span>Haz clic en <strong>"+ Agregar proyecto"</strong> para añadir tus trabajos de Upper</span>
-    </div>
-  </div>
+  <div class="projects-intro"><div><span class="section-label">04 — Proyectos</span><h2 class="section-title" style="margin-bottom:0">Trabajos<br>destacados.</h2></div></div>
 
   <div class="projects-grid">
 
     <!-- PROYECTOS UPPER DINÁMICOS -->
-    <div id="upper-projects-list"></div>
+    
 
 
     <!-- UPPER CARRUSEL -->
@@ -965,14 +962,7 @@
         <p>Redacción de notificaciones in-app para la aplicación de Upper adaptadas a temporalidades clave: Navidad, Carnaval, alertas de vuelo y recordatorios de acción. Copy breve, directo y con emojis estratégicos para maximizar la tasa de apertura.</p>
       </div>
     </div>
-    <!-- Botón agregar Upper -->
-    <div class="upper-section" id="upper-add-section">
-      <h3>✦ Proyectos de Upper</h3>
-      <p>Agrega aquí tus trabajos de Upper — copys, campañas, guiones o lo que quieras mostrar. Cada tarjeta quedará guardada en esta página.</p>
-      <button class="upper-add-btn" onclick="openModal()">+ Agregar proyecto de Upper</button>
-    </div>
-
-    <!-- La Ganga Copys 1 -->
+        <!-- La Ganga Copys 1 -->
     <div class="project-card reveal">
       <img src="images/img_029.jpg" style="width:100%;display:block;border-radius:20px 20px 0 0;min-height:220px;object-fit:cover;background:#e8edf5;"/>
       <div class="project-body">
@@ -1366,7 +1356,7 @@
     </div>
     <div class="contact-card">
       <div class="contact-card-label">Correo</div>
-      <div class="contact-card-value">natashaseixas25 [at] gmail.com</div>
+      <div class="contact-card-value">natashaseixas25@gmail.com</div>
     </div>
     <div class="contact-card">
       <div class="contact-card-label">Ubicación</div>
@@ -1445,39 +1435,7 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Modal
-  function openModal() {
-    document.getElementById('modal').classList.add('active');
-  }
-  function closeModal() {
-    document.getElementById('modal').classList.remove('active');
-    document.getElementById('proj-title').value = '';
-    document.getElementById('proj-desc').value = '';
-    document.getElementById('proj-link').value = '';
-    document.getElementById('proj-emoji').value = '✍️';
-  }
-
-  let projects = JSON.parse(localStorage.getItem('natasha_upper_projects') || '[]');
-  renderProjects();
-
-  function addProject() {
-    const title = document.getElementById('proj-title').value.trim();
-    const desc = document.getElementById('proj-desc').value.trim();
-    if (!title || !desc) { alert('Por favor completa el título y la descripción.'); return; }
-    const proj = {
-      id: Date.now(),
-      title,
-      cat: document.getElementById('proj-cat').value,
-      desc,
-      color: document.getElementById('proj-color').value,
-      emoji: document.getElementById('proj-emoji').value || '✍️',
-      link: document.getElementById('proj-link').value.trim(),
-    };
-    projects.push(proj);
-    localStorage.setItem('natasha_upper_projects', JSON.stringify(projects));
-    renderProjects();
-    closeModal();
-  }
+  
 
   function deleteProject(id) {
     if (!confirm('¿Eliminar este proyecto?')) return;
@@ -1509,12 +1467,7 @@
       container.appendChild(card);
     });
 
-    // Mover botón agregar al final si hay proyectos
-    const addSection = document.getElementById('upper-add-section');
-    if (projects.length > 0) {
-      addSection.style.gridColumn = '1';
-      addSection.style.padding = '28px';
-    }
+    
   }
 
   // Smooth nav active state
