@@ -456,6 +456,42 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+
+  /* EDICIÓN DE VIDEOS */
+  .video-edit { background: var(--navy); color: var(--white); }
+  .video-edit .section-label { color: var(--periwinkle-light); }
+  .video-edit .section-title { color: var(--white); }
+  .video-edit .section-title em { font-family:'Playfair Display',serif; font-style:italic; color: var(--periwinkle); }
+  .ve-toolbox { display:flex; flex-wrap:wrap; gap:40px 64px; margin:-28px 0 64px; }
+  .ve-toolgroup-label { display:block; font-size:0.72rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--periwinkle); margin-bottom:12px; }
+  .ve-tools { display:flex; flex-wrap:wrap; gap:12px; }
+  .ve-tool { display:flex; align-items:center; gap:10px; padding:10px 18px 10px 10px; border:1px solid rgba(197,207,223,0.25); border-radius:100px; font-size:0.88rem; font-weight:600; }
+  .ve-tool-icon { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+  .ve-tool-icon.pr { background:#00005B; color:#9999FF; border:1px solid #9999FF; }
+  .ve-tool-icon.cc { background:#FFFFFF; color:#000000; }
+  .ve-tool-icon.hf { background:#D1FE17; color:#000000; }
+  .ve-tool-icon.cl { background:#D97757; color:#FFFFFF; font-size:1rem; }
+  .ve-client { display:grid; grid-template-columns: 300px 1fr; gap:56px; align-items:start; }
+  .ve-client + .ve-client { margin-top:88px; padding-top:88px; border-top:1px solid rgba(197,207,223,0.15); }
+  .ve-client-info { position:sticky; top:110px; }
+  .ve-kicker { font-size:0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--periwinkle); display:block; margin-bottom:12px; }
+  .ve-client-info h3 { font-family:'Playfair Display',serif; font-size:clamp(28px,3vw,40px); line-height:1.1; margin-bottom:20px; }
+  .ve-client-info p { color:var(--periwinkle-light); font-size:0.98rem; line-height:1.7; margin-bottom:24px; }
+  .ve-tags { display:flex; flex-wrap:wrap; gap:8px; }
+  .ve-tags span { background:rgba(139,157,195,0.15); color:var(--periwinkle-pale); padding:6px 14px; border-radius:100px; font-size:0.78rem; font-weight:500; }
+  .ve-videos { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:32px; }
+  .ve-video h4 { font-family:'Playfair Display',serif; font-size:1.25rem; line-height:1.25; margin:20px 0 8px; }
+  .ve-video p { color:var(--periwinkle-light); font-size:0.9rem; line-height:1.6; margin-bottom:14px; }
+  .ve-link { display:inline-flex; align-items:center; gap:8px; color:var(--white); text-decoration:none; font-weight:600; font-size:0.85rem; border-bottom:1px solid var(--periwinkle); padding-bottom:3px; }
+  .ve-link:hover { color:var(--periwinkle-light); }
+  .ve-player { background:#FFFFFF; border-radius:20px; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,0.35); }
+  .ve-player iframe { display:block; width:100%; height:600px; border:0; }
+  @media (max-width: 768px) {
+    .ve-client { grid-template-columns: 1fr; gap:40px; }
+    .ve-client-info { position:static; }
+    .ve-toolbox { margin-top:-36px; gap:28px; }
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
@@ -575,6 +611,7 @@
     <li><a href="#about">Sobre mí</a></li>
     <li><a href="#skills">Habilidades</a></li>
     <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#video">Edición de videos</a></li>
     <li><a href="#journalism">Periodismo</a></li>
     <li><a href="#contact">Contacto</a></li>
   </ul>
@@ -1297,9 +1334,75 @@
 
 </section>
 
+<!-- EDICIÓN DE VIDEOS -->
+<section class="video-edit" id="video">
+  <span class="section-label reveal">05 — Edición de videos</span>
+  <h2 class="section-title reveal">Del material en bruto<br>al <em>reel terminado</em></h2>
+  <div class="ve-toolbox reveal">
+    <div class="ve-toolgroup">
+      <span class="ve-toolgroup-label">Edito con</span>
+      <div class="ve-tools">
+        <div class="ve-tool"><span class="ve-tool-icon pr">Pr</span>Adobe Premiere Pro</div>
+        <div class="ve-tool"><span class="ve-tool-icon cc">✂</span>CapCut</div>
+      </div>
+    </div>
+    <div class="ve-toolgroup">
+      <span class="ve-toolgroup-label">Optimizo mis tiempos con IA</span>
+      <div class="ve-tools">
+        <div class="ve-tool"><span class="ve-tool-icon hf">H</span>Higgsfield</div>
+        <div class="ve-tool"><span class="ve-tool-icon cl">✳</span>Claude</div>
+      </div>
+    </div>
+  </div>
+  <div class="ve-client reveal">
+    <div class="ve-client-info">
+      <span class="ve-kicker">Marca personal · Instagram Reels</span>
+      <h3>Sebastián de los Ríos</h3>
+      <p>Edición de reels para la marca personal de Sebastián, que enseña a emprender y a crear marcas de productos propias. Ritmo ágil y mensajes claros, pensados para que cada consejo se entienda y se guarde.</p>
+      <div class="ve-tags"><span>Marca personal</span><span>Emprendimiento</span><span>Reel vertical</span></div>
+    </div>
+    <div class="ve-videos">
+      <div class="ve-video">
+        <div class="ve-player"><iframe src="https://www.instagram.com/reel/De0R4TMkiFK/embed/" title="Reel: productos en los que sí vale la pena invertir" loading="lazy" allow="encrypted-media; picture-in-picture" scrolling="no"></iframe></div>
+        <h4>En qué sí vale la pena invertir</h4>
+        <p>Los productos en los que sí conviene invertir para crear una marca propia.</p>
+        <a href="https://www.instagram.com/reel/De0R4TMkiFK/" target="_blank" rel="noopener" class="ve-link">Ver en Instagram ↗</a>
+      </div>
+      <div class="ve-video">
+        <div class="ve-player"><iframe src="https://www.instagram.com/reel/DYpaMahE1k9/embed/" title="Reel: herramienta de IA para crear tu marca" loading="lazy" allow="encrypted-media; picture-in-picture" scrolling="no"></iframe></div>
+        <h4>Tu marca desde cero con IA</h4>
+        <p>Una herramienta de inteligencia artificial que ayuda a construir desde cero una marca de productos.</p>
+        <a href="https://www.instagram.com/reel/DYpaMahE1k9/" target="_blank" rel="noopener" class="ve-link">Ver en Instagram ↗</a>
+      </div>
+      <div class="ve-video">
+        <div class="ve-player"><iframe src="https://www.instagram.com/reel/DZ5VvjTCfji/embed/" title="Reel: marca blanca vs. marca propia" loading="lazy" allow="encrypted-media; picture-in-picture" scrolling="no"></iframe></div>
+        <h4>Marca blanca vs. marca propia</h4>
+        <p>Por qué cambia el precio al crear un producto de marca blanca frente a uno de marca propia.</p>
+        <a href="https://www.instagram.com/reel/DZ5VvjTCfji/" target="_blank" rel="noopener" class="ve-link">Ver en Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+  <div class="ve-client reveal">
+    <div class="ve-client-info">
+      <span class="ve-kicker">Construcción e ingeniería · Instagram Reel</span>
+      <h3>Construnarve</h3>
+      <p>Edición de contenido para una empresa de construcción e ingeniería, con un tono educativo para que temas técnicos se vuelvan claros y cercanos para el público.</p>
+      <div class="ve-tags"><span>Construcción</span><span>Contenido educativo</span><span>Reel vertical</span></div>
+    </div>
+    <div class="ve-videos">
+      <div class="ve-video">
+        <div class="ve-player"><iframe src="https://www.instagram.com/reel/DfaZo_Fz77l/embed/" title="Reel Construnarve: la importancia de planificar" loading="lazy" allow="encrypted-media; picture-in-picture" scrolling="no"></iframe></div>
+        <h4>Planificar antes de construir</h4>
+        <p>Un reel que concientiza sobre la importancia de planificar bien un proyecto antes de empezar la obra.</p>
+        <a href="https://www.instagram.com/reel/DfaZo_Fz77l/" target="_blank" rel="noopener" class="ve-link">Ver en Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PERIODISMO -->
 <section class="journalism" id="journalism">
-  <span class="section-label reveal">05 — Periodismo</span>
+  <span class="section-label reveal">06 — Periodismo</span>
   <h2 class="section-title reveal">Mis trabajos<br>periodísticos</h2>
   <div class="journalism-grid">
     <div class="journalism-card reveal">
@@ -1428,7 +1531,7 @@
 
 <!-- CONTACTO -->
 <section class="contact" id="contact">
-  <span class="section-label">06 — Contacto</span>
+  <span class="section-label">07 — Contacto</span>
   <h2 class="contact-title">¿Te enganchó<br><em>mi trabajo?</em></h2>
   <p class="contact-sub">Hablemos. Siempre estoy abierta a nuevos proyectos y oportunidades.</p>
   <div class="contact-cards">
